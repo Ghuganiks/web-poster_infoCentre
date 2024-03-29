@@ -1,0 +1,395 @@
+@import url("https://fonts.cdnfonts.com/css/monaco");
+* {
+  user-select: none;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-y: clip;
+}
+
+main {
+  margin: 0 60px;
+}
+
+h1,
+h3,
+a,
+h5,
+p {
+  margin: 0;
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+#canvas {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  gap: 20px;
+  max-width: 600px;
+  box-shadow: 0px 0px 5px black;
+  border: 1px solid black;
+  top: 0;
+  margin: 10px;
+  padding: 16px;
+  border-radius: 8px;
+  left: 0;
+  position: absolute;
+  z-index: 11;
+  background: white;
+}
+
+header {
+  padding: 40px 40px;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.table {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid #000;
+}
+
+.cell:first-child {
+  border-right: 1px solid #000;
+}
+
+.cell {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 16px;
+}
+
+.cell > p {
+  width: 75%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.cell > h3 {
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.cell:first {
+  background: yellow;
+  border: 1px solid #000;
+}
+
+.folders {
+  position: relative;
+  margin-top: 100px;
+}
+
+.folder {
+  margin: 0 auto;
+  border: 1px solid #000;
+  height: 300px;
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 16px 16px 0 0;
+  background: white;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.folder:hover {
+  transform: translate(-50%, -40px);
+  transition: transform 0.3s ease-in-out;
+}
+
+.folder-header {
+  width: max-content;
+  position: absolute;
+  top: -45px;
+  left: 40px;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 0;
+}
+
+.folder-header-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  width: 90%;
+}
+
+.pincode-folder {
+  margin: 0 auto;
+  margin-top: 80px;
+  border: 1px solid #000;
+  height: 900px;
+  max-width: 900px;
+  position: relative;
+  border-radius: 16px 16px 0 0;
+  background: white;
+  padding: 32px;
+}
+
+.pincode-header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-transform: uppercase;
+}
+
+.lines {
+  height: 300px;
+  background: url(../assets/lines.svg) no-repeat;
+  background-size: cover;
+}
+
+.pincode-buttons {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pincode-buttons > a {
+  color: #000;
+  text-decoration: none;
+}
+
+.pincode-buttons > a > span {
+  text-decoration: underline;
+}
+.floating-folders {
+  height: 100%;
+}
+
+.floating-folder {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  gap: 10px;
+  width: 90px;
+}
+
+.floating-folder > h5 {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.floating-window {
+  background: white;
+  border-radius: 15px;
+  border: 1.6px solid black;
+  position: absolute;
+  max-width: 340px;
+  max-height: 380px;
+  width: 100%;
+}
+
+.floating-window__header {
+  height: 40px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-bottom: 1.6px solid black;
+}
+.floating-window__header_close {
+  display: flex;
+  margin-left: 12px;
+  gap: 8px;
+}
+
+.floating-window__header > span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.floating-window__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px 0;
+}
+.floating-window__content > textarea {
+  width: 100%;
+  max-width: 100%;
+  max-height: 200px;
+  border-style: inset;
+  border-radius: 8px;
+  border-bottom: 1.6px solid black;
+  margin-top: 10px;
+}
+
+.floating-window__button {
+  margin-top: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border-width: 4px;
+  border-color: black;
+  border-style: double;
+  background: none;
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.convert-continer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.convert {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.4s ease-in;
+  -webkit-transition: opacity 0.4s ease-in;
+  -moz-transition: opacity 0.4s ease-in;
+  -ms-transition: opacity 0.4s ease-in;
+  -o-transition: opacity 0.4s ease-in;
+  opacity: 1;
+}
+
+.transitioning-src {
+  transition: opacity 0.4s ease-out;
+  -webkit-transition: opacity 0.4s ease-out;
+  -moz-transition: opacity 0.4s ease-out;
+  -ms-transition: opacity 0.4s ease-out;
+  -o-transition: opacity 0.4s ease-out;
+  opacity: 0;
+}
+
+.pamyatka {
+  border: 1.6px solid black;
+  margin-top: 40px;
+  padding: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  text-transform: uppercase;
+}
+.pamyatka > h2 {
+  margin: 0;
+  text-align: center;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+}
+@media (max-width: 500px) {
+  main {
+    margin: 0 10px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 400;
+  }
+  h3,
+  a,
+  h5,
+  p {
+    font-size: 14px;
+  }
+
+  .pincode-folder {
+    padding: 20px 12px;
+    margin-top: 30px;
+  }
+  .pincode-header {
+    gap: 16px;
+  }
+
+  .convert {
+    width: 90%;
+  }
+  header {
+    padding: 40px 0px;
+  }
+}
+@media (max-width: 768px) {
+  .floating-folders: {
+    min-height: 600px;
+  }
+  .folder-header-text {
+    font-size: 12px;
+  }
+  .table {
+    flex-wrap: wrap;
+  }
+  .cell {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .cell:first-child {
+    border-right: none;
+    border-bottom: 1px solid black;
+  }
+  .cell > p {
+    width: 100%;
+  }
+
+  .folder-header {
+    top: -30px;
+  }
+  .folder-header > img {
+    height: 32px;
+  }
+  header {
+    justify-content: center;
+  }
+  header > span {
+    display: none;
+  }
+}
